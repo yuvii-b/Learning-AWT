@@ -1,8 +1,10 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-class MainForm{
+class MainForm implements ActionListener {
     private static final int FRAME_WIDTH = 500;
     private static final int FRAME_HEIGHT = 500;
     Frame frame;
@@ -36,10 +38,12 @@ class MainForm{
         register = new Button("REGISTER");
         register.setBounds(190, 250, 100, 30);
         register.setFocusable(false);
+        register.addActionListener(this);
         register.setFont(new Font("Brush Script MT", Font.PLAIN, 15));
         login = new Button("LOGIN");
         login.setBounds(190, 350, 100, 30);
         login.setFocusable(false);
+        login.addActionListener(this);
         login.setFont(new Font("Brush Script MT", Font.PLAIN, 15));
 
         //adding components to the frame
@@ -54,6 +58,18 @@ class MainForm{
         frame.setLayout(null);
         frame.setResizable(false);
         frame.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == register){
+            frame.dispose();
+            new RegisterPage();
+        }
+        if(e.getSource() == login){
+            frame.dispose();
+            new LoginPage();
+        }
     }
 }
 
