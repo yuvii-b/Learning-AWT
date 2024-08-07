@@ -1,27 +1,9 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
+import java.awt.event.*;
+import static constants.Constants.*;
 import db.JDBC;
 
-import javax.swing.*;
-
 public class LoginPage implements ActionListener {
-    private static final int FRAME_WIDTH = 500;
-    private static final int FRAME_HEIGHT = 500;
-    Frame frame;
-    Label heading;
-    Label name;
-    Label email;
-    Label password;
-    TextField nameInput;
-    TextField emailInput;
-    TextField passwordInput;
-    Button login;
-    Button back;
-    Label result;
     LoginPage(){
         //frame
         frame = new Frame("LOGIN");

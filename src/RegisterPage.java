@@ -1,32 +1,11 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import com.sun.tools.javac.Main;
+import java.awt.event.*;
+import static constants.Constants.*;
 import db.JDBC;
 
 import javax.swing.*;
 
 public class RegisterPage implements ActionListener {
-    private static final int FRAME_WIDTH = 500;
-    private static final int FRAME_HEIGHT = 500;
-    Frame frame;
-    Label heading;
-    Label name;
-    Label age;
-    Label email;
-    Label password;
-    Label rePassword;
-    Label result;
-    TextField nameInput;
-    TextField ageInput;
-    TextField emailInput;
-    TextField passwordInput;
-    TextField rePassInput;
-    Button submit;
-    Button back;
     RegisterPage(){
         //frame
         frame = new Frame("SIGN UP");

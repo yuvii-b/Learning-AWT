@@ -1,18 +1,8 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
+import static constants.Constants.*;
 
 class MainForm implements ActionListener {
-    private static final int FRAME_WIDTH = 500;
-    private static final int FRAME_HEIGHT = 500;
-    Frame frame;
-    Label heading;
-    Label registerMessage;
-    Label loginMessage;
-    Button register;
-    Button login;
     MainForm(){
         //frame
         frame = new Frame("REGISTRATION FORM");
