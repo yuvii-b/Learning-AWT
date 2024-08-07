@@ -39,8 +39,21 @@ public class JDBC {
         return true;
     }
 
-    public static boolean loginUser(){
-        return false;
+    public static boolean loginUser(String name, String email, String password){
+        try{
+            Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
+            PreparedStatement loginUser = connection.prepareStatement("SELECT * FROM " + Constants.DB_TABLE_NAME + " WHERE username = ? AND password = ? AND email = ?");
+            loginUser.setString(1, name);
+            loginUser.setString(2, password);
+            loginUser.setString(3, email);
+            ResultSet resultSet = loginUser.executeQuery();
+            if(!resultSet.isBeforeFirst()){
+                return false;
+            }
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+        return true;
     }
 
 }

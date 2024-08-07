@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import db.JDBC;
+
 public class LoginPage implements ActionListener {
     private static final int FRAME_WIDTH = 500;
     private static final int FRAME_HEIGHT = 500;
@@ -40,7 +42,7 @@ public class LoginPage implements ActionListener {
         password = new Label("PASSWORD: ");
         password.setBounds(40, 290, 200, 30);
         password.setFont(new Font("Brush Script MT", Font.BOLD, 24));
-        result = new Label("LOGIN FAILED");
+        result = new Label();
         result.setBounds(130, 360, 300, 30);
         result.setFont(new Font("Agency FB", Font.BOLD, 20));
 
@@ -83,11 +85,16 @@ public class LoginPage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == login){
-            String regex = "\\d+";
             String name = nameInput.getText();
             String email = emailInput.getText();
             String password = passwordInput.getText();
-
+            if(JDBC.loginUser(name, email, password)){
+                result.setText("LOGIN SUCCESSFUL");
+                result.setForeground(new Color(0, 255, 0));
+            }else{
+                result.setText("LOGIN FAILED");
+                result.setForeground(new Color(255, 0, 0));
+            }
         }
     }
 }
