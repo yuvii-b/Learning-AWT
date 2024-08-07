@@ -6,6 +6,8 @@ import java.awt.event.WindowEvent;
 
 import db.JDBC;
 
+import javax.swing.*;
+
 public class LoginPage implements ActionListener {
     private static final int FRAME_WIDTH = 500;
     private static final int FRAME_HEIGHT = 500;
@@ -18,6 +20,7 @@ public class LoginPage implements ActionListener {
     TextField emailInput;
     TextField passwordInput;
     Button login;
+    Button back;
     Label result;
     LoginPage(){
         //frame
@@ -63,6 +66,11 @@ public class LoginPage implements ActionListener {
         login.setFocusable(false);
         login.addActionListener(this);
         login.setFont(new Font("Brush Script MT", Font.PLAIN, 15));
+        back = new Button("BACK");
+        back.setBounds(10, 35, 100, 30);
+        back.setFont(new Font("Serif", Font.PLAIN, 15));
+        back.addActionListener(this);
+        back.setForeground(new Color(0, 100, 100));
 
         //adding components to the frame
         frame.add(heading);
@@ -74,6 +82,7 @@ public class LoginPage implements ActionListener {
         frame.add(passwordInput);
         frame.add(login);
         frame.add(result);
+        frame.add(back);
 
         //frame features
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -95,6 +104,11 @@ public class LoginPage implements ActionListener {
                 result.setText("LOGIN FAILED");
                 result.setForeground(new Color(255, 0, 0));
             }
+        }
+
+        if(e.getSource() == back){
+            frame.dispose();
+            new MainForm();
         }
     }
 }

@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import com.sun.tools.javac.Main;
 import db.JDBC;
 
 import javax.swing.*;
@@ -25,6 +26,7 @@ public class RegisterPage implements ActionListener {
     TextField passwordInput;
     TextField rePassInput;
     Button submit;
+    Button back;
     RegisterPage(){
         //frame
         frame = new Frame("SIGN UP");
@@ -82,6 +84,11 @@ public class RegisterPage implements ActionListener {
         submit.setFocusable(false);
         submit.addActionListener(this);
         submit.setFont(new Font("Brush Script MT", Font.PLAIN, 15));
+        back = new Button("BACK");
+        back.setBounds(10, 35, 100, 30);
+        back.setFont(new Font("Serif", Font.PLAIN, 15));
+        back.addActionListener(this);
+        back.setForeground(new Color(0, 100, 100));
 
         //adding components to the frame
         frame.add(heading);
@@ -97,6 +104,7 @@ public class RegisterPage implements ActionListener {
         frame.add(rePassInput);
         frame.add(submit);
         frame.add(result);
+        frame.add(back);
 
         //frame features
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -123,8 +131,17 @@ public class RegisterPage implements ActionListener {
                     result.setText("USERNAME ALREADY EXISTS");
                 }
             }else{
-                JOptionPane.showMessageDialog(frame, "Error: Username, email, password must be at least 4 characters \nand/or Passwords must match \nCheck if all boxes are filled properly!");
+                JOptionPane.showMessageDialog(frame, """
+                        Error: Username, email, password must be at least 4 characters\s
+                        and/or Passwords must match\
+                        \s
+                        Check if all boxes are filled properly!""");
             }
+        }
+
+        if(e.getSource() == back){
+            frame.dispose();
+            new MainForm();
         }
     }
 
