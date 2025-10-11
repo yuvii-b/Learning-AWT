@@ -1,3 +1,3 @@
 # Learning-AWT
 
-Code Repository for the purpose of learning Git CLI and Java GUI using AWT (Login and Register Page, With MySQL JDBC)
+Code Repository of using Git CLI and learning Java GUI using AWT (Login and Register Page, With integrated MySQL JDBC)

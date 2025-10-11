@@ -97,12 +97,12 @@ public class RegisterPage implements ActionListener {
         if(e.getSource() == submit){
             int age = -1;
             String name = nameInput.getText();
-            String checkAge = ageInput.getText();
+            String age = ageInput.getText();
             String email = emailInput.getText();
             String password = passwordInput.getText();
             String rePassword = rePassInput.getText();
             if(validate(name, checkAge, email, password, rePassword)){
-                if(JDBC.registerUser(name, Integer.parseInt(checkAge), email, password)){
+                if(JDBC.registerUser(name, Integer.parseInt(age), email, password)){
                     result.setForeground(new Color(0, 255, 0));
                     result.setText("SUCCESSFUL REGISTRATION");
                 }else{
